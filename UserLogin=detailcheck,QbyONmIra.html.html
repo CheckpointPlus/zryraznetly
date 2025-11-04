@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZyrazNet+ Checkpoint</title>
+  <style>*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}html,body{height:100%;}body{background:linear-gradient(to bottom,#6a5acd,#00bfff);min-height:100vh;display:flex;align-items:center;justify-content:center;transition:background 0.5s;}.container{background:#fff;padding:1.5rem 2rem;border-radius:20px;box-shadow:0 0 20px rgba(0,0,0,0.15);width:320px;max-width:92%;text-align:center;transition:background 0.5s,color 0.5s;position:relative;z-index:5;}body.dark .container{background:#1e1e2f;color:#fff;}h2{margin-bottom:1rem;font-weight:600;font-size:1.25rem;}p{margin:0.5rem 0;}input[type="text"],input[type="email"],input[type="password"]{width:100%;padding:0.6rem;margin:0.35rem 0;border:1px solid #ccc;border-radius:10px;outline:none;transition:0.2s ease-in-out;font-size:0.95rem;}input:focus{border-color:#6a5acd;box-shadow:0 0 4px rgba(106,90,205,0.4);} .photo-upload{width:100%;display:flex;justify-content:center;align-items:center;margin:0.8rem 0;}.file-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:1.2rem;border-radius:16px;background:linear-gradient(90deg,#6a5acd,#00bfff);color:white;font-weight:600;font-size:1rem;cursor:pointer;user-select:none;transition:all 0.2s ease;text-align:center;}.file-btn:hover{transform:scale(1.03);box-shadow:0 0 15px rgba(0,0,0,0.2);}.photo-icon{font-size:2rem;margin-bottom:0.4rem;}input[type="file"]{display:none;}label.checkbox{display:flex;align-items:center;gap:8px;font-size:0.95rem;cursor:pointer;user-select:none;margin:0.25rem 0;}input[type="checkbox"]{width:18px;height:18px;cursor:pointer;accent-color:#6a5acd;}.btn{width:100%;background:linear-gradient(to right,#6a5acd,#00bfff);border:none;color:white;padding:0.7rem;margin-top:0.8rem;border-radius:10px;cursor:pointer;font-weight:600;transition:0.2s ease;}.btn:hover{transform:scale(1.03);}.toggle-link{color:#6a5acd;cursor:pointer;margin-top:0.8rem;display:block;font-size:0.9rem;}.dark-toggle{position:absolute;top:10px;right:10px;cursor:pointer;font-size:1rem;} #welcomePage{display:none;text-align:center;opacity:1;transform:scale(1);transition:opacity 1s ease,transform 1s ease;}#welcomePage.fade-out{opacity:0;transform:scale(0.92);}#dashboardPage{display:none;text-align:center;opacity:0;transition:opacity 1s ease;}#dashboardPage.fade-in{opacity:1;}#welcomePage img{width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:1rem;border:2px solid #6a5acd;animation:glow 3s infinite alternate;}@keyframes glow{from{box-shadow:0 0 5px #6a5acd;}to{box-shadow:0 0 15px #00bfff;}}.welcome-header,.welcome-text{font-size:1.1rem;font-weight:bold;color:black;}body.dark .welcome-header,body.dark .welcome-text{color:white;}.email-box{margin-top:1rem;padding:0.5rem 1rem;border:1px solid #6a5acd;border-radius:15px;display:inline-block;background:rgba(255,255,255,0.2);box-shadow:0 0 10px rgba(106,90,205,0.4);animation:subtleGlow 4s infinite alternate;}@keyframes subtleGlow{from{box-shadow:0 0 5px #6a5acd;}to{box-shadow:0 0 15px #00bfff;}} .proceed-wrap{display:inline-block;position:relative;border-radius:14px;padding:4px;}.proceed-wrap .proceed-btn{display:inline-block;border-radius:10px;padding:0.7rem 1.6rem;border:none;background:linear-gradient(to right,#6a5acd,#00bfff);color:#fff;font-weight:700;cursor:pointer;z-index:2;position:relative;animation:dancePulse 4s ease-in-out infinite;} .proceed-wrap::before{content:"";position:absolute;inset:-4px;border-radius:16px;z-index:1;background:conic-gradient(#6a5acd,#ff77d6,#00bfff,#6a5acd);filter:blur(6px) saturate(130%);opacity:0.9;transform:rotate(0deg);animation:spinBorder 6s linear infinite;pointer-events:none;mix-blend-mode:screen;} .proceed-wrap::after{content:"";position:absolute;inset:2px;border-radius:12px;background:transparent;z-index:3;pointer-events:none;box-shadow:none;}@keyframes spinBorder{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}.popup{position:fixed;top:14%;left:50%;transform:translateX(-50%) scale(0.98);background:#00c851;color:#fff;padding:12px 20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.2);font-weight:600;opacity:0;transition:all 0.35s ease;z-index:20000;pointer-events:none;}.popup.show{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto;} .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(2px);opacity:0;transition:opacity 0.2s ease;z-index:9998;display:none;}.modal-backdrop.show{display:block;opacity:1;} #resetPage{display:none;} .profile-summary{margin-bottom:0.6rem;}.profile-summary img{display:block;margin:0 auto 0.5rem;}.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;margin:0.8rem 0;}.stat-card{background:linear-gradient(90deg,#6a5acd,#00bfff);color:white;padding:0.7rem;border-radius:12px;font-weight:600;box-shadow:0 0 10px rgba(0,0,0,0.1);text-align:left;}.stat-card.center{text-align:center;cursor:pointer;}.stat-title{font-size:0.85rem;opacity:0.95;}.stat-value{font-size:1.05rem;margin-top:0.2rem;}.activity-list{max-height:110px;overflow-y:auto;margin:0.8rem 0;text-align:left;font-size:0.9rem;padding-right:6px;}.activity-item{margin-bottom:0.5rem;border-left:3px solid #6a5acd;padding-left:0.5rem;}canvas{width:100%;height:120px;margin-top:0.6rem;border-radius:10px;display:block;}.quick-links{margin-top:0.7rem;display:flex;flex-direction:column;gap:0.4rem;align-items:center;} #settingsModal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.88);background:#fff;color:#000;padding:1.1rem 1.2rem;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,0.35);display:none;z-index:9999;width:320px;text-align:left;}body.dark #settingsModal{background:#1e1e2f;color:#fff;}#settingsModal.show{display:block;transform:translate(-50%,-50%) scale(1);transition:0.25s ease;} #profileModal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.88);background:#fff;color:#000;padding:1.1rem 1.2rem;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,0.35);display:none;z-index:9999;width:320px;text-align:left;}body.dark #profileModal{background:#1e1e2f;color:#fff;}#profileModal.show{display:block;transform:translate(-50%,-50%) scale(1);transition:0.25s ease;} #accountModal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.88);background:#fff;color:#000;padding:1.1rem 1.2rem;border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,0.35);display:none;z-index:9999;width:340px;text-align:left;}body.dark #accountModal{background:#1e1e2f;color:#fff;}#accountModal.show{display:block;transform:translate(-50%,-50%) scale(1);transition:0.25s ease;} #accountModal .logout-fab{position:absolute;right:14px;bottom:14px;background:#ff4444;color:white;border:none;padding:10px 12px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;z-index:10001;}body.dark #accountModal .logout-fab{box-shadow:0 6px 18px rgba(0,0,0,0.6);} #logoutConfirm{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.92);width:320px;background:#fff;padding:16px;border-radius:12px;z-index:10002;display:none;box-shadow:0 12px 36px rgba(0,0,0,0.28);}body.dark #logoutConfirm{background:#1e1e2f;color:#fff;}#logoutConfirm.show{display:block;transform:translate(-50%,-50%) scale(1);transition:all .18s ease;} .back-btn{position:absolute;left:12px;top:12px;background:rgba(255,255,255,0.95);padding:6px 8px;border-radius:10px;font-weight:700;cursor:pointer;z-index:6;box-shadow:0 6px 16px rgba(0,0,0,0.08);}body.dark .back-btn{background:rgba(30,30,47,0.9);color:#fff;} @media (max-width:420px){.container{width:92%;padding:1rem 1rem;}#settingsModal,#profileModal,#accountModal{width:92%;}} .center{text-align:center;}.muted{opacity:0.8;font-size:0.9rem;}@keyframes dancePulse{0%{transform:scale(1) rotate(0deg);box-shadow:0 0 10px rgba(106,90,205,0.4);}20%{transform:scale(1.05) rotate(1deg);box-shadow:0 0 15px rgba(0,191,255,0.5);}40%{transform:scale(0.98) rotate(-1deg);box-shadow:0 0 18px rgba(106,90,205,0.6);}60%{transform:scale(1.03) rotate(1deg);box-shadow:0 0 12px rgba(0,191,255,0.4);}80%{transform:scale(1.02) rotate(-1deg);box-shadow:0 0 16px rgba(106,90,205,0.5);}100%{transform:scale(1) rotate(0deg);box-shadow:0 0 10px rgba(0,191,255,0.3);}} .petal{position:fixed;font-size:28px;opacity:0.95;transform-origin:center;pointer-events:none;z-index:100000;will-change:transform,opacity;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.2));user-select:none;}.petal.big{font-size:42px;}.petal.small{font-size:20px;}@keyframes petalBurst{0%{transform:translate(-50%,-50%) scale(0) rotate(0deg);opacity:0;}20%{transform:translate(-50%,-50%) scale(1.1) rotate(10deg);opacity:1;}80%{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) scale(0.8) rotate(var(--r));opacity:0.7;}100%{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) scale(0.7) rotate(var(--r));opacity:0;}}</style>
+</head>
+<body>
+  <div id="petalContainer" aria-hidden="true"></div>
+  <!-- BACKDROP (for modals) -->
+  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true"></div>
+
+  <!-- =========================
+       SIGNUP PAGE
+       ========================= -->
+  <div class="container" id="signupPage">
+    <div class="dark-toggle" id="darkToggle">🌙</div>
+    <h2>Create Account</h2>
+
+    <input type="text" id="fullName" placeholder="Full Name" required />
+    <input type="text" id="phoneNumber" placeholder="Phone Number" required />
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="email" id="email" placeholder="example@email.com" required />
+
+    <div class="photo-upload">
+      <label for="profilePic" class="file-btn" data-no-close="true">
+        <span class="photo-icon">📸</span>
+        <span>Tap to Choose a Photo</span>
+      </label>
+      <input type="file" id="profilePic" accept="image/*">
+    </div>
+
+    <input type="password" id="password" placeholder="Password" required />
+    <label class="checkbox"><input type="checkbox" id="showPass"> Show Password</label>
+    <label class="checkbox"><input type="checkbox" id="rememberMe"> Remember Me</label>
+
+    <button class="btn" id="signupBtn" data-no-close="true">Create Account</button>
+    <span class="toggle-link" id="toLogin" data-no-close="true">Already have an account? Login</span>
+  </div>
+
+  <!-- =========================
+       LOGIN PAGE
+       ========================= -->
+  <div class="container" id="loginPage" style="display:none;">
+    <div class="dark-toggle" id="darkToggle2">🌙</div>
+    <h2>Login</h2>
+
+    <input type="text" id="loginUsername" placeholder="Username" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <label class="checkbox"><input type="checkbox" id="loginShowPass"> Show Password</label>
+    <label class="checkbox"><input type="checkbox" id="loginRemember"> Remember Me</label>
+
+    <button class="btn" id="loginBtn" data-no-close="true">Login Now</button>
+    <span class="toggle-link" id="toReset" data-no-close="true">Forgot password?</span>
+    <span class="toggle-link" id="toSignup" data-no-close="true">Don't have an account? Sign up</span>
+  </div>
+
+  <!-- =========================
+       RESET PAGE
+       ========================= -->
+  <div class="container" id="resetPage" style="display:none;">
+    <div class="dark-toggle" id="darkToggle3">🌙</div>
+    <h2>Reset Password</h2>
+    <input type="text" id="resetUsername" placeholder="Enter your username" required />
+    <input type="password" id="newPassword" placeholder="Enter new password" required />
+    <button class="btn" id="resetBtn" data-no-close="true">Reset Password</button>
+    <span class="toggle-link" id="backToLogin" data-no-close="true">Back to Login</span>
+  </div>
+
+  <!-- =========================
+       WELCOME PAGE
+       (Proceed removed - will auto-fade to dashboard)
+       ========================= -->
+  <div class="container" id="welcomePage" style="display:none;">
+    <img id="userPhoto" src="https://via.placeholder.com/100" alt="Profile Photo">
+    <div class="welcome-header" id="welcomeHeader">Welcome</div>
+    <div class="welcome-text center" id="greetText">You're logged in</div>
+    <div class="email-box" id="userEmailBox"></div>
+    <!-- checkpoint removed intentionally -->
+  </div>
+
+  <!-- =========================
+       DASHBOARD PAGE
+       ========================= -->
+  <div class="container" id="dashboardPage" style="display:none;">
+    <div class="back-btn" id="backBtn">🔙 Back</div>
+    <div class="dark-toggle" id="darkToggle4">🌙</div>
+    <h2>Dashboard</h2>
+
+    <div class="profile-summary">
+      <img id="dashPhoto" src="https://via.placeholder.com/100" alt="photo" style="width:80px;height:80px;border-radius:50%;border:2px solid #6a5acd;">
+      <div id="dashName" style="font-weight:600;margin-top:6px;">User</div>
+      <div id='dashEmail' style="font-size:0.9rem;opacity:0.85;">you@example.com</div>
+    </div>
+
+    <!-- Changed: Messages -> My Account (clickable) - removed the "5" -->
+    <div class="stats-grid">
+      <div class="stat-card center" id="homeBtn" title="Home (reset view)" data-no-close="true">🏠 Home</div>
+
+      <div class="stat-card center" id="myAccountBtn" title="My Account" data-no-close="true">
+        <div class="stat-title">My Account</div>
+        <div class="stat-value" id="statMessages"></div>
+      </div>
+
+      <div class="stat-card center" id="profileBtn" title="Open Profile" data-no-close="true">👤 Profile</div>
+
+      <div class="stat-card">
+        <div class="stat-title">Progress</div>
+        <div class="stat-value" id="statProgress">78%</div>
+      </div>
+    </div>
+
+    <div class="activity-list" id="activityList">
+      <!-- items appended in JS -->
+    </div>
+
+    <canvas id="barChart" width="300" height="120"></canvas>
+
+    <div class="quick-links">
+      <!-- dashboard checkpoint button (keeps animation but with subtle blue-pink rim) -->
+      <div class="proceed-wrap" title="Proceed to Checkpoint">
+        <button class="proceed-btn checkpoint-large" id="checkpointBtn" data-no-close="true">🚀 Proceed to Checkpoint</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       SETTINGS MODAL (old password confirmation)
+       ========================= -->
+  <div id="settingsModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <h3 style="margin-bottom:0.4rem;">Settings</h3>
+
+    <label style="display:block;margin-top:0.4rem;">Old Password</label>
+    <input type="password" id="oldPassInput" placeholder="Enter old password" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #ccc;">
+
+    <label style="display:block;margin-top:0.5rem;">New Password</label>
+    <input type="password" id="newPassInput" placeholder="Enter new password" style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #ccc;">
+
+    <button class="btn" id="savePassBtn" data-no-close="true" style="margin-top:0.6rem;">Save Password</button>
+
+    <hr style="margin:0.8rem 0;">
+    <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" id="darkToggleModal"> Dark Mode</label>
+    <button class="btn" id="closeSettings" data-no-close="true" style="margin-top:0.6rem;">Close</button>
+  </div>
+
+  <!-- =========================
+       PROFILE MODAL
+       ========================= -->
+  <div id="profileModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <h3 style="margin-bottom:0.5rem;">👤 Your Profile</h3>
+    <div style="text-align:center;">
+      <img id="profileModalPhoto" src="https://via.placeholder.com/100" alt="Profile Photo" style="width:80px;height:80px;border-radius:50%;border:2px solid #6a5acd;margin-bottom:0.5rem;">
+      <div style="margin-top:0.4rem;"><strong>Name:</strong> <span id="profileModalName"></span></div>
+      <div style="margin-top:0.2rem;"><strong>Username:</strong> <span id="profileModalUsername"></span></div>
+      <div style="margin-top:0.2rem;"><strong>Email:</strong> <span id="profileModalEmail"></span></div>
+      <div style="margin-top:0.4rem;">
+        <button class="btn" id="closeProfile" data-no-close="true" style="margin-top:0.2rem;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       ACCOUNT MODAL (My Account) - editable phone/email/username + change photo + logout
+       ========================= -->
+  <div id="accountModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <h3 style="margin-bottom:0.5rem;">My Account</h3>
+    <div style="padding: 6px 2px 60px 2px; position:relative;">
+      <div style="margin-top:0.4rem;"><strong>Username:</strong> <span id="accountUsername"></span></div>
+      <div style="margin-top:0.8rem;"><strong>Email:</strong> <span id="accountEmail"></span></div>
+      <div style="margin-top:0.8rem;"><strong>Phone:</strong> <span id="accountPhone"></span></div>
+
+      <div style="display:flex; gap:8px; margin-top:10px;">
+        <button id="accountEditBtn" class="btn" style="flex:1; padding:0.5rem;">✏️ Edit</button>
+        <button id="accountPhotoBtn" class="btn" style="flex:1; padding:0.5rem; background:linear-gradient(90deg,#00bfff,#6a5acd);">🖼️ Change Photo</button>
+      </div>
+
+      <input type="file" id="accountPhotoInput" accept="image/*" style="display:none;">
+      <div style="margin-top:8px; display:none;" id="accountSaveRow">
+        <button id="accountSaveBtn" class="btn" style="background:#12c20b;">💾 Save Changes</button>
+      </div>
+
+      <div class="muted" style="margin-top:0.6rem; font-size:0.85rem;">Tap the logout button to sign out (your account stays saved).</div>
+      <button class="logout-fab" id="accountLogout" data-no-close="true">Logout</button>
+    </div>
+  </div>
+
+  <!-- =========================
+       Logout confirm modal (custom)
+       ========================= -->
+  <div id="logoutConfirm" aria-hidden="true" role="dialog" aria-modal="true">
+    <div style="padding:14px 16px; text-align:left;">
+      <h3 style="margin-bottom:6px;">Confirm Logout</h3>
+      <p class="muted" style="margin-bottom:10px;">Are you sure you want to log out?</p>
+      <div style="display:flex; gap:8px;">
+        <button id="cancelLogout" class="btn" style="flex:1; background:transparent; color:#6a5acd; border:1px solid #6a5acd;">Cancel</button>
+        <button id="confirmLogout" class="btn" style="flex:1; background:#ff4444;">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">✅ <span id="popupText">Action completed</span></div>
+
+  <script>
+    // ====================================================
+    // DOM refs
+    // ====================================================
+    const body = document.body;
+    const signupPage = document.getElementById('signupPage');
+    const loginPage = document.getElementById('loginPage');
+    const resetPage = document.getElementById('resetPage');
+    const welcomePage = document.getElementById('welcomePage');
+    const dashboardPage = document.getElementById('dashboardPage');
+
+    const modalBackdrop = document.getElementById('modalBackdrop');
+
+    // Dark toggles list (ensure they exist; safe attach)
+    const darkToggles = ['darkToggle','darkToggle2','darkToggle3','darkToggle4'];
+    darkToggles.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.addEventListener('click', (ev) => {
+        ev.stopPropagation(); // prevent global click handler confusion
+        body.classList.toggle('dark');
+      });
+    });
+
+    // File upload handling (signup)
+    const profilePic = document.getElementById('profilePic');
+    document.querySelectorAll('.file-btn').forEach(btn => {
+      if(btn) btn.addEventListener('click', e => { e.preventDefault(); if(profilePic) profilePic.click(); });
+    });
+
+    // Navigation toggles (signup/login/reset)
+    const toLogin = document.getElementById('toLogin');
+    const toSignup = document.getElementById('toSignup');
+    const toReset = document.getElementById('toReset');
+    const backToLogin = document.getElementById('backToLogin');
+
+    if(toLogin) toLogin.addEventListener('click', (e) => { e.stopPropagation(); signupPage.style.display='none'; loginPage.style.display='block'; });
+    if(toSignup) toSignup.addEventListener('click', (e) => { e.stopPropagation(); loginPage.style.display='none'; signupPage.style.display='block'; });
+    if(toReset) toReset.addEventListener('click', (e) => { e.stopPropagation(); loginPage.style.display='none'; resetPage.style.display='block'; });
+    if(backToLogin) backToLogin.addEventListener('click', (e) => { e.stopPropagation(); resetPage.style.display='none'; loginPage.style.display='block'; });
+
+    // Popup utility (used for signup success and reset notifications)
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popupText');
+    let popupTimeout = null;
+    function showPopup(message, duration = 5000) {
+      if(popupTimeout) clearTimeout(popupTimeout);
+      popupText.textContent = message;
+      popup.classList.add('show');
+      popupTimeout = setTimeout(() => {
+        popup.classList.remove('show');
+        popupTimeout = null;
+      }, duration);
+    }
+
+    // Show/hide password toggles safety
+    const password = document.getElementById('password');
+    const showPass = document.getElementById('showPass');
+    if(showPass && password) showPass.addEventListener('change', e => password.type = e.target.checked ? 'text' : 'password');
+
+    const loginPassword = document.getElementById('loginPassword');
+    const loginShowPass = document.getElementById('loginShowPass');
+    if(loginShowPass && loginPassword) loginShowPass.addEventListener('change', e => loginPassword.type = e.target.checked ? 'text' : 'password');
+
+    // ====================================================
+    // SIGNUP - Save to localStorage (simulate backend)
+    // ====================================================
+    const signupBtn = document.getElementById('signupBtn');
+    if(signupBtn) signupBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const name = (document.getElementById('fullName') || {}).value;
+      const phone = (document.getElementById('phoneNumber') || {}).value;
+      const username = (document.getElementById('username') || {}).value;
+      const email = (document.getElementById('email') || {}).value;
+      const pass = (document.getElementById('password') || {}).value;
+
+      if(!name || !username || !email || !pass) { alert('Please fill all fields'); return; }
+
+      localStorage.setItem('savedFullName', name);
+      localStorage.setItem('savedPhone', phone);
+      localStorage.setItem('savedUsername', username);
+      localStorage.setItem('savedEmail', email);
+      localStorage.setItem('savedPassword', pass);
+
+      // store photo (optional)
+      const file = profilePic && profilePic.files && profilePic.files[0];
+      if(file){
+        const reader = new FileReader();
+        reader.onload = e => { localStorage.setItem('userPhoto', e.target.result); };
+        reader.readAsDataURL(file);
+      } else {
+        // if no photo chosen, set default placeholder
+        localStorage.setItem('userPhoto', 'https://via.placeholder.com/100');
+      }
+
+      // Show welcome popup then switch to login after 5s
+      showPopup(`🎉 Welcome aboard, ${username}! Your account has been created successfully.`, 5000);
+
+      setTimeout(() => {
+        signupPage.style.display='none';
+        loginPage.style.display='block';
+        const loginUserInput = document.getElementById('loginUsername');
+        if(loginUserInput) loginUserInput.value = username;
+      }, 5000);
+    });
+
+    // ====================================================
+    // LOGIN - verify localStorage
+    // ====================================================
+    const loginBtn = document.getElementById('loginBtn');
+    if(loginBtn) loginBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const username = (document.getElementById('loginUsername') || {}).value;
+      const pass = (document.getElementById('loginPassword') || {}).value;
+      const savedUser = localStorage.getItem('savedUsername');
+      const savedPass = localStorage.getItem('savedPassword');
+      const savedEmail = localStorage.getItem('savedEmail');
+      const savedPhoto = localStorage.getItem('userPhoto') || 'https://via.placeholder.com/100';
+
+      if(username !== savedUser || pass !== savedPass) { alert('Invalid username or password'); return; }
+
+      // prepare welcome page
+      const userPhotoEl = document.getElementById('userPhoto');
+      if(userPhotoEl) userPhotoEl.src = savedPhoto;
+      const emailBox = document.getElementById('userEmailBox');
+      if(emailBox) emailBox.textContent = savedEmail || '';
+
+      const hour = new Date().getHours();
+      const greet = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+      const greetTextEl = document.getElementById('greetText');
+      if(greetTextEl) greetTextEl.textContent = `${greet}, ${username} 😊!`;
+      const welcomeHeader = document.getElementById('welcomeHeader');
+      if(welcomeHeader) welcomeHeader.textContent = `Hi👋, ${username} welcome back`;
+
+      // transition to welcome then dashboard
+      loginPage.style.display = 'none';
+      welcomePage.style.display = 'block';
+
+      // After 3s show welcome, then animate to dashboard
+      setTimeout(() => {
+        welcomePage.classList.add('fade-out');
+
+        // Make dashboard visible and fade in
+        dashboardPage.style.display = 'block';
+        // force reflow for transition
+        // eslint-disable-next-line no-unused-expressions
+        dashboardPage.offsetHeight;
+        dashboardPage.classList.add('fade-in');
+
+        // finalize after animation
+        setTimeout(() => {
+          welcomePage.classList.remove('fade-out');
+          welcomePage.style.display = 'none';
+          dashboardPage.classList.remove('fade-in');
+          dashboardPage.style.opacity = '1';
+          // load dashboard content now that the user is authenticated
+          loadDashboard();
+        }, 1000);
+
+      }, 3000);
+    });
+
+    // ====================================================
+    // RESET PASSWORD
+    // ====================================================
+    const resetBtn = document.getElementById('resetBtn');
+    if(resetBtn) resetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const user = (document.getElementById('resetUsername') || {}).value;
+      const newPass = (document.getElementById('newPassword') || {}).value;
+      const savedUser = localStorage.getItem('savedUsername');
+      if(!user || !newPass) { alert('Please enter username and new password'); return; }
+      if(user !== savedUser) { alert('Username not found!'); return; }
+      localStorage.setItem('savedPassword', newPass);
+      showPopup(`✅ Password for ${user} has been reset successfully.`, 3000);
+      setTimeout(() => { resetPage.style.display='none'; loginPage.style.display='block'; }, 2000);
+    });
+
+    // ====================================================
+    // DASHBOARD: load content & draw chart
+    // ====================================================
+    function loadDashboard(){
+      // profile
+      const photo = localStorage.getItem('userPhoto') || 'https://via.placeholder.com/100';
+      const username = localStorage.getItem('savedUsername') || 'User';
+      const email = localStorage.getItem('savedEmail') || '';
+      const fullname = localStorage.getItem('savedFullName') || username;
+      const phone = localStorage.getItem('savedPhone') || '';
+
+      const dashPhoto = document.getElementById('dashPhoto');
+      if(dashPhoto) dashPhoto.src = photo;
+      const dashName = document.getElementById('dashName');
+      if(dashName) dashName.textContent = fullname;
+      const dashEmail = document.getElementById('dashEmail');
+      if(dashEmail) dashEmail.textContent = email;
+
+      // stats (mock values)
+      const statMessages = document.getElementById('statMessages');
+      const statProgress = document.getElementById('statProgress');
+
+      if(statMessages) statMessages.textContent = ''; // removed the '5' as requested
+      if(statProgress) statProgress.textContent = '78%';
+
+      // activity feed
+      const act = [
+        '✔️ Completed profile setup',
+        '🛄 Ready to proceed to CheckPoint!',
+        `🕒 Logged in at ${new Date().toLocaleTimeString()}`
+      ];
+      const activityList = document.getElementById('activityList');
+      if(activityList) {
+        activityList.innerHTML = '';
+        act.forEach(a => {
+          const d = document.createElement('div');
+          d.className = 'activity-item';
+          d.textContent = a;
+          activityList.appendChild(d);
+        });
+      }
+
+      // draw simple bar chart on canvas
+      const c = document.getElementById('barChart');
+      if(c) {
+        const ctx = c.getContext('2d');
+        ctx.clearRect(0, 0, c.width, c.height);
+        // sample data
+        const data = [40, 80, 60, 100];
+        const barWidth = 30;
+        const gap = 20;
+        const baseX = 20;
+        const baseY = c.height - 10;
+        ctx.fillStyle = '#6a5acd';
+        for(let i=0;i<data.length;i++){
+          const h = data[i];
+          const x = baseX + i * (barWidth + gap);
+          ctx.fillRect(x, baseY - h, barWidth, h);
+        }
+        ctx.fillStyle = '#ffffff20';
+        ctx.font = '10px Poppins, sans-serif';
+      }
+    }
+
+    // ====================================================
+    // Modal helpers (backdrop handling)
+    // ====================================================
+    function openModal(modalEl) {
+      if(!modalEl) return;
+      modalBackdrop.classList.add('show');
+      modalBackdrop.setAttribute('aria-hidden','false');
+      modalEl.classList.add('show');
+      modalEl.setAttribute('aria-hidden','false');
+    }
+    function closeModal(modalEl) {
+      if(!modalEl) return;
+      modalEl.classList.remove('show');
+      modalEl.setAttribute('aria-hidden','true');
+      // if no other modal open, hide backdrop
+      setTimeout(() => {
+        const anyOpen = document.querySelector('#settingsModal.show, #profileModal.show, #accountModal.show, #logoutConfirm.show');
+        if(!anyOpen) {
+          modalBackdrop.classList.remove('show');
+          modalBackdrop.setAttribute('aria-hidden','true');
+        }
+      }, 40);
+    }
+
+    // close all modals
+    function closeAllModals() {
+      ['settingsModal','profileModal','accountModal','logoutConfirm'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.remove('show');
+      });
+      modalBackdrop.classList.remove('show');
+      modalBackdrop.setAttribute('aria-hidden','true');
+    }
+
+    // close when backdrop clicked
+    modalBackdrop.addEventListener('click', (e) => {
+      closeAllModals();
+    });
+
+    // ====================================================
+    // SETTINGS MODAL logic (old password required)
+    // ====================================================
+    const modal = document.getElementById('settingsModal');
+    const openSettingsBtn = document.getElementById('openSettings');
+    if(openSettingsBtn) openSettingsBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      openModal(modal);
+      // sync dark toggle checkbox with current state
+      const darkToggleModal = document.getElementById('darkToggleModal');
+      if(darkToggleModal) darkToggleModal.checked = body.classList.contains('dark');
+    });
+
+    // Prevent propagation so clicking inside modal doesn't close via backdrop logic
+    if(modal) modal.addEventListener('click', (ev) => { ev.stopPropagation(); });
+
+    const closeSettingsBtn = document.getElementById('closeSettings');
+    if(closeSettingsBtn) closeSettingsBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      closeModal(modal);
+    });
+
+    const savePassBtn = document.getElementById('savePassBtn');
+    if(savePassBtn) savePassBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const np = (document.getElementById('newPassInput') || {}).value.trim();
+      const old = (document.getElementById('oldPassInput') || {}).value.trim();
+      const saved = localStorage.getItem('savedPassword');
+
+      if(!old || !np){ alert('Please enter old and new password'); return; }
+      if(saved === null){ alert('No password is currently saved. You can set a password by creating an account.'); return; }
+      if(old !== saved){ alert('Old password is incorrect'); return; }
+
+      localStorage.setItem('savedPassword', np);
+      showPopup('✅ Password updated!', 2000);
+      (document.getElementById('newPassInput') || {}).value = '';
+      (document.getElementById('oldPassInput') || {}).value = '';
+      closeModal(modal);
+    });
+
+    const darkToggleModal = document.getElementById('darkToggleModal');
+    if(darkToggleModal) darkToggleModal.addEventListener('change', (e) => {
+      body.classList.toggle('dark', e.target.checked);
+    });
+
+    // ====================================================
+    // PROFILE MODAL logic
+    // ====================================================
+    const profileModal = document.getElementById('profileModal');
+    const profileBtn = document.getElementById('profileBtn');
+    const closeProfileBtn = document.getElementById('closeProfile');
+
+    if(profileBtn) profileBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const name = localStorage.getItem('savedFullName') || 'N/A';
+      const username = localStorage.getItem('savedUsername') || 'User';
+      const email = localStorage.getItem('savedEmail') || 'you@example.com';
+      const photo = localStorage.getItem('userPhoto') || 'https://via.placeholder.com/100';
+      const pName = document.getElementById('profileModalName');
+      const pUser = document.getElementById('profileModalUsername');
+      const pEmail = document.getElementById('profileModalEmail');
+      const pPhoto = document.getElementById('profileModalPhoto');
+      if(pName) pName.textContent = name;
+      if(pUser) pUser.textContent = username;
+      if(pEmail) pEmail.textContent = email;
+      if(pPhoto) pPhoto.src = photo;
+
+      openModal(profileModal);
+    });
+
+    if(profileModal) profileModal.addEventListener('click', (ev) => { ev.stopPropagation(); });
+
+    if(closeProfileBtn) closeProfileBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      closeModal(profileModal);
+    });
+
+    // ====================================================
+    // ACCOUNT (My Account) Modal logic - EDIT, CHANGE PHOTO, SAVE, LOGOUT (custom)
+    // ====================================================
+    const accountModal = document.getElementById('accountModal');
+    const myAccountBtn = document.getElementById('myAccountBtn');
+    const accountUsername = document.getElementById('accountUsername');
+    const accountEmail = document.getElementById('accountEmail');
+    const accountPhone = document.getElementById('accountPhone');
+    const accountLogout = document.getElementById('accountLogout');
+
+    const accountEditBtn = document.getElementById('accountEditBtn');
+    const accountPhotoBtn = document.getElementById('accountPhotoBtn');
+    const accountPhotoInput = document.getElementById('accountPhotoInput');
+    const accountSaveRow = document.getElementById('accountSaveRow');
+    const accountSaveBtn = document.getElementById('accountSaveBtn');
+
+    function populateAccountModal() {
+      const username = localStorage.getItem('savedUsername') || 'N/A';
+      const email = localStorage.getItem('savedEmail') || 'N/A';
+      const phone = localStorage.getItem('savedPhone') || 'N/A';
+      if(accountUsername) accountUsername.textContent = username;
+      if(accountEmail) accountEmail.textContent = email;
+      if(accountPhone) accountPhone.textContent = phone;
+    }
+
+    if(myAccountBtn) myAccountBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      populateAccountModal();
+      // ensure edit controls are reset
+      accountSaveRow.style.display = 'none';
+      accountEditBtn.style.display = 'inline-block';
+      openModal(accountModal);
+    });
+
+    if(accountModal) accountModal.addEventListener('click', (ev) => { ev.stopPropagation(); });
+
+    // Edit: convert spans to inputs
+    if(accountEditBtn) accountEditBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const curEmail = accountEmail.textContent || '';
+      const curPhone = accountPhone.textContent || '';
+      accountEmail.innerHTML = `<input id="accountEmailInput" type="email" value="${curEmail}" style="width:100%;padding:6px;border-radius:8px;border:1px solid #ccc;">`;
+      accountPhone.innerHTML = `<input id="accountPhoneInput" type="text" value="${curPhone}" style="width:100%;padding:6px;border-radius:8px;border:1px solid #ccc;">`;
+      accountSaveRow.style.display = 'block';
+      accountEditBtn.style.display = 'none';
+    });
+
+    // Save: store changes and update UI
+    if(accountSaveBtn) accountSaveBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const emailInput = document.getElementById('accountEmailInput');
+      const phoneInput = document.getElementById('accountPhoneInput');
+      const newEmail = emailInput ? emailInput.value.trim() : (accountEmail.textContent || '');
+      const newPhone = phoneInput ? phoneInput.value.trim() : (accountPhone.textContent || '');
+      localStorage.setItem('savedEmail', newEmail);
+      localStorage.setItem('savedPhone', newPhone);
+      // update display
+      accountEmail.textContent = newEmail;
+      accountPhone.textContent = newPhone;
+      // update other places
+      const dashEmail = document.getElementById('dashEmail'); if(dashEmail) dashEmail.textContent = newEmail;
+      const profileModalEmail = document.getElementById('profileModalEmail'); if(profileModalEmail) profileModalEmail.textContent = newEmail;
+      accountSaveRow.style.display = 'none';
+      accountEditBtn.style.display = 'inline-block';
+      showPopup('✅ Account updated!', 2000);
+    });
+
+    // Change photo
+    if(accountPhotoBtn) accountPhotoBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      accountPhotoInput.click();
+    });
+    if(accountPhotoInput) accountPhotoInput.addEventListener('change', (ev) => {
+      const file = accountPhotoInput.files && accountPhotoInput.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        localStorage.setItem('userPhoto', e.target.result);
+        // update UI
+        const dashPhoto = document.getElementById('dashPhoto'); if(dashPhoto) dashPhoto.src = e.target.result;
+        const profileModalPhoto = document.getElementById('profileModalPhoto'); if(profileModalPhoto) profileModalPhoto.src = e.target.result;
+        const userPhoto = document.getElementById('userPhoto'); if(userPhoto) userPhoto.src = e.target.result;
+        showPopup('✅ Profile photo updated!', 2000);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Logout handler - open custom confirm modal
+    const logoutConfirm = document.getElementById('logoutConfirm');
+    const cancelLogout = document.getElementById('cancelLogout');
+    const confirmLogout = document.getElementById('confirmLogout');
+
+    if(accountLogout) accountLogout.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      openModal(logoutConfirm);
+    });
+
+    if(cancelLogout) cancelLogout.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      closeModal(logoutConfirm);
+    });
+
+    if(confirmLogout) confirmLogout.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      // close modals then return to login (do NOT erase stored user data)
+      closeAllModals();
+      // hide main pages, show login
+      dashboardPage.style.display = 'none';
+      welcomePage.style.display = 'none';
+      signupPage.style.display = 'none';
+      resetPage.style.display = 'none';
+      loginPage.style.display = 'block';
+      // prefill username for convenience
+      const savedUser = localStorage.getItem('savedUsername') || '';
+      const loginUserInput = document.getElementById('loginUsername'); if(loginUserInput) loginUserInput.value = savedUser;
+      const loginPassInput = document.getElementById('loginPassword'); if(loginPassInput) loginPassInput.value = '';
+      showPopup('You have been logged out. Your account data is still saved for next time.', 2500);
+    });
+
+    // ====================================================
+    // Home button: resets dashboard view
+    // ====================================================
+    const homeBtn = document.getElementById('homeBtn');
+    if(homeBtn) homeBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      loadDashboard();
+      const activityList = document.getElementById('activityList');
+      if(activityList) activityList.scrollTop = 0;
+      homeBtn.style.transform = 'scale(1.03)';
+      setTimeout(() => homeBtn.style.transform = '', 150);
+    });
+
+    // ====================================================
+    // Proceed to checkpoint (dashboard) - animated button
+    // ====================================================
+    const checkpointBtn = document.getElementById('checkpointBtn');
+    if (checkpointBtn) {
+      // Clone to remove any old duplicate listeners
+      const newBtn = checkpointBtn.cloneNode(true);
+      checkpointBtn.parentNode.replaceChild(newBtn, checkpointBtn);
+
+      newBtn.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        // Button center (precise, works on mobile/desktop/scroll)
+        const rect = this.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Temp container for petals
+        const petalContainer = document.createElement('div');
+        petalContainer.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:99999;';
+        document.body.appendChild(petalContainer);
+
+        const numPetals = 320; // Dense, magical burst
+        for (let i = 0; i < numPetals; i++) {
+          const petal = document.createElement('div');
+          petal.textContent = '🌸';
+          petal.classList.add('petal');
+
+          // Random big/small/normal
+          const rand = Math.random();
+          if (rand < 0.25) petal.classList.add('big');
+          else if (rand < 0.5) petal.classList.add('small');
+
+          // Start exactly at button center
+          petal.style.left = `${centerX}px`;
+          petal.style.top = `${centerY}px`;
+
+          // Random direction, distance, rotation
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 250 + Math.random() * 450;
+          const dx = Math.cos(angle) * distance;
+          const dy = Math.sin(angle) * distance;
+          const rot = Math.random() * 720 - 360;
+
+          petal.style.setProperty('--dx', `${dx}px`);
+          petal.style.setProperty('--dy', `${dy}px`);
+          petal.style.setProperty('--r', `${rot}deg`);
+
+          // Staggered start for wave effect
+          const delay = i * 0.02; // Up to ~1.4s stagger
+
+          // Apply burst animation
+          petal.style.animation = `petalBurst 3.8s ease-out ${delay}s forwards`;
+
+          petalContainer.appendChild(petal);
+        }
+
+        // Clean up and navigate after full animation (~5.5s total)
+        setTimeout(() => {
+          petalContainer.remove();
+          newBtn.textContent = "🚀 Launching Checkpoint...";
+          window.open('https://heylink.me/Zyraznetpluscheckpoint/', '_self');
+        }, 6000);
+      });
+    }
+
+    // ====================================================
+    // Back button logic (top-left)
+    // - returns to Login view while keeping stored user data
+    // ====================================================
+    const backBtn = document.getElementById('backBtn');
+    if(backBtn) backBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      // simply return to login screen (preserve stored data)
+      dashboardPage.style.display = 'none';
+      welcomePage.style.display = 'none';
+      signupPage.style.display = 'none';
+      resetPage.style.display = 'none';
+      loginPage.style.display = 'block';
+      // prefill username
+      const savedUser = localStorage.getItem('savedUsername') || '';
+      const loginUserInput = document.getElementById('loginUsername'); if(loginUserInput) loginUserInput.value = savedUser;
+      showPopup('Returned to Login', 1200);
+    });
+
+    // ====================================================
+    // Global click handler to close modals when clicking outside
+    // - respects data-no-close attribute on elements (like open buttons)
+    // - modals stopPropagation when clicked inside
+    // ====================================================
+    document.addEventListener('click', (e) => {
+      // if clicking on an element that is explicitly marked to not close modals, ignore
+      const noClose = e.target.closest('[data-no-close="true"]');
+      if(noClose) return;
+
+      // close settings modal if open
+      if(modal && modal.classList.contains('show')) {
+        const rect = modal.getBoundingClientRect();
+        if(!(e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom)) {
+          closeModal(modal);
+        }
+      }
+
+      // close profile modal if open
+      if(profileModal && profileModal.classList.contains('show')) {
+        const rect2 = profileModal.getBoundingClientRect();
+        if(!(e.clientX >= rect2.left && e.clientX <= rect2.right && e.clientY >= rect2.top && e.clientY <= rect2.bottom)) {
+          closeModal(profileModal);
+        }
+      }
+
+      // close account modal if open
+      if(accountModal && accountModal.classList.contains('show')) {
+        const rect3 = accountModal.getBoundingClientRect();
+        if(!(e.clientX >= rect3.left && e.clientX <= rect3.right && e.clientY >= rect3.top && e.clientY <= rect3.bottom)) {
+          closeModal(accountModal);
+        }
+      }
+
+      // close logoutConfirm if clicking outside
+      const logoutEl = document.getElementById('logoutConfirm');
+      if(logoutEl && logoutEl.classList.contains('show')) {
+        const rect4 = logoutEl.getBoundingClientRect();
+        if(!(e.clientX >= rect4.left && e.clientX <= rect4.right && e.clientY >= rect4.top && e.clientY <= rect4.bottom)) {
+          closeModal(logoutEl);
+        }
+      }
+    });
+
+    // ====================================================
+    // Keyboard: ESC closes modals
+    // ====================================================
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') {
+        closeAllModals();
+      }
+    });
+
+    // ====================================================
+    // Prevent accidental form submit on Enter key in inputs
+    // ====================================================
+    document.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter') {
+          e.preventDefault();
+        }
+      });
+    });
+
+    // ====================================================
+    // Initial state: if user exists, show login else signup
+    // ====================================================
+    (function init() {
+      const existingUser = localStorage.getItem('savedUsername');
+      if(existingUser) {
+        signupPage.style.display = 'none';
+        loginPage.style.display = 'block';
+        const loginUserInput = document.getElementById('loginUsername');
+        if(loginUserInput) loginUserInput.value = existingUser;
+      } else {
+        signupPage.style.display = 'block';
+        loginPage.style.display = 'none';
+      }
+      // ensure modals do not show on load
+      closeAllModals();
+    })();
+
+    // ====================================================
+    // Small helper for dev/testing - prefill a test account if none exists
+    // (comment out or remove in production)
+    // ====================================================
+    (function devSeed() {
+      if(!localStorage.getItem('savedUsername')) {
+        // Uncomment next block if you want to seed dev user automatically:
+        /*
+        localStorage.setItem('savedUsername','testuser');
+        localStorage.setItem('savedFullName','Test User');
+        localStorage.setItem('savedEmail','test@example.com');
+        localStorage.setItem('savedPassword','12345');
+        localStorage.setItem('savedPhone','+1234567890');
+        localStorage.setItem('userPhoto','https://via.placeholder.com/100');
+        */
+      }
+    })();
+
+    // end of script
+  </script>
+</body>
+</html>
